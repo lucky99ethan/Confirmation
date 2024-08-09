@@ -7,21 +7,22 @@ export default function Home() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [name, setName] = useState("");
   const [secondName, setSecondName] = useState("");
-  const [showEmailConfirmation, setShowEmailConfirmation] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setShowEmailConfirmation(true);
+    setShowConfirmation(true);
   };
 
-  const handleEmailConfirm = () => {
+  const handleConfirm = () => {
     // Handle confirmation logic here
-    setShowEmailConfirmation(false);
-    alert(`Email: ${email}\nPhone Number: ${phoneNumber}\nName: ${name}\nSecond Name: ${secondName}`);
+    setShowConfirmation(false);
+    alert(`Email: ${email}\nPhone Number: ${phoneNumber}\nFirst Name: ${name}\nSecond Name: ${secondName}`);
+    window.location.reload();
   };
 
   const handleCloseConfirmation = () => {
-    setShowEmailConfirmation(false);
+    setShowConfirmation(false);
   };
 
   return (
@@ -75,7 +76,7 @@ export default function Home() {
         <button type="submit" className="border-2 border-red-400 w-24 h-10 rounded-xl text-black ml-9">Submit</button>
       </form>
 
-      {showEmailConfirmation && (
+      {showConfirmation && (
         <div className="fixed top-0 left-0 w-full h-full flex  bg-opacity-30 items-center justify-center z-10">
           <div className="p-4 w-84 h-61 rounded-xl shadow-2xl bg-black">
             <div className="flex justify-center items-center mt-4 mb-4">
@@ -89,7 +90,7 @@ export default function Home() {
             <div className="flex justify-center gap-4">
               <button
                 className=" border-2 border-orange-400 w-93 h-13 p-2 rounded-lg text-white"
-                onClick={handleEmailConfirm}
+                onClick={handleConfirm}
               >
                Save
               </button>
